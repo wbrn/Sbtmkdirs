@@ -1,9 +1,10 @@
 name := "Sbtmkdirs"
 version := "0.1"
-scalaVersion := "2.12.8"
+scalaVersion := "2.12.10"
 
 libraryDependencies ++= Seq(
-    "org.scalatest" %% "scalatest" % "3.0.5" % "test"
+    "org.scalactic" %% "scalactic" % "3.1.0",
+    "org.scalatest" %% "scalatest" % "3.1.0" % "test"
 )
 
 // see https://tpolecat.github.io/2017/04/25/scalac-flags.html for scalacOptions descriptions
@@ -16,3 +17,4 @@ scalacOptions ++= Seq(
 )
 
 
+enablePlugins(JavaAppPackaging)

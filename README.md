@@ -9,7 +9,6 @@ Since GraalVM lets us create native executables that start up
 immediately, I decided to rewrite this in Scala.
 
 
-
 ## Usage
 
 Here’s a quick example of how to use `sbtmkdirs` once it’s compiled:
@@ -64,19 +63,14 @@ Directory/Project Name (Foo):
 ````
 
 
-
 ## Compiling
 
 I create the application like this:
 
-1. Create a JAR file with `sbt package`.
-2. That creates a file named *target/scala-2.12/sbtmkdirs_2.12-0.1.jar*.
-3. `cd` into the *Graal* directory.
-4. Run `. 1setup_graal` to set up my environment variables. (You’ll need to change that script for your system.)
-5. Create the executable by running `./2compile_graal.sh`.
-
-That last command creates a native executable named *sbtmkdirs*. I then copy that file to my *~/bin* directory so it’s on my PATH.
-
+1. Create a binary package with `sbt universal:packageBin`
+2. That creates a file named `target/universal/sbtmkdirs-0.1.tgz`
+3. Extract it and use sbtmkdirs with `sbtmkdirs-0.1/bin/sbtmkdirs` 
+4. You can also install it ni your system by copying all things in `sbtmkdirs-0.1`
 
 
 ## TODO
@@ -84,6 +78,3 @@ That last command creates a native executable named *sbtmkdirs*. I then copy tha
 Brief to-do list:
 
 - I think it would be better if all of the files that are generated could be created from external files (possibly using a template system like StringTemplate or FreeMarker). That way you can easily change those resources without having to recompile everything.
-
-
-
