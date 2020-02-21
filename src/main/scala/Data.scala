@@ -23,21 +23,20 @@ object Data {
         |*.iml
         |*.ipr
         |*.iws
-        |.idea
-        """.stripMargin
+        |.idea""".stripMargin
 
     def readmeData(projectName: String) =
         s"""|# ${projectName}
-            |
-        """.stripMargin
+            |""".stripMargin
 
     def buildDotSbtData(projectName: String) =
     s"""|name := "$projectName"
         |version := "0.1"
-        |scalaVersion := "2.12.8"
+        |scalaVersion := "2.12.10"
         |
         |libraryDependencies ++= Seq(
-        |    "org.scalatest" %% "scalatest" % "3.0.5" % "test"
+        |  "org.scalactic" %% "scalactic" % "3.1.0",
+        |  "org.scalatest" %% "scalatest" % "3.1.0" % "test"
         |)
         |
         |// see https://tpolecat.github.io/2017/04/25/scalac-flags.html for scalacOptions descriptions
@@ -48,8 +47,11 @@ object Data {
         |    "-Ywarn-dead-code", //warn when dead code is identified
         |    "-Xfatal-warnings"  //fail the compilation if there are any warnings
         |)
-    """.stripMargin
-        
+        |
+        |enablePlugins(JavaAppPackaging)""".stripMargin
+
+    def pluginsDotSbtData() =
+    s"""|// for autoplugins
+        |addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.6.1")""".stripMargin
+
 }
-
-

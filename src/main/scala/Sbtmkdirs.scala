@@ -65,6 +65,10 @@ object Sbtmkdirs extends App {
         projectName + SLASH + "build.sbt",
         Data.buildDotSbtData(projectName)
     )
+    FileUtils.writeFile(
+        projectName + SLASH + "project" + SLASH + "plugins.sbt",
+        Data.pluginsDotSbtData()
+    )
 
     // create other dirs as requested
     if (bCreateJavaDir) {
@@ -91,15 +95,6 @@ object Sbtmkdirs extends App {
         )
     }
 
-    println("Project created.")
-
+    println(s"Project '$projectName' created.")
 
 }
-
-
-
-
-
-
-
-
